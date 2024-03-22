@@ -50,9 +50,13 @@ management:
 
 server:
   servlet:
-    context-path: "/clockin"
+    context-path: "/"
   port: 8004
 
+jwt:
+  token:
+    key:
+      public: "${JWT_PUBLIC_KEY}"
 
 # --- Custom keys ---
 

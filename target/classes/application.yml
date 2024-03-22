@@ -4,13 +4,18 @@ spring:
     compose:
       # We don't want to use docker compose in prod and test
       enabled: false
+  profiles:
+    # Value comes from Maven profile (pom.xml)
+    active: 'dev'
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: ${DB_PASSWORD:backend}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:backend}
+    username: ${DB_USERNAME:backend}
   jpa:
     hibernate:
       ddl-auto: validate
     show-sql: true
-  profiles:
-    # Value comes from Maven profile (pom.xml)
-    active: 'dev'
   flyway:
     locations: classpath:db/migrations/{vendor}/
     enabled: true
@@ -45,9 +50,13 @@ management:
 
 server:
   servlet:
-    context-path: "/production"
+    context-path: "/"
   port: 8004
 
+jwt:
+  token:
+    key:
+      public: "${JWT_PUBLIC_KEY}"
 
 # --- Custom keys ---
 
@@ -55,7 +64,6 @@ info:
   name: 'Service ClockIn'
   description: 'FIAP SOAT1 2023 - Group 63 - Hackaton - Clock In microservice'
   version: '5.0.0'
-
 
 app:
   docs-api-url: "${DOCS_API_URL:(no value)}"
@@ -65,8 +73,3 @@ app:
     session-token: "${AWS_SESSION_TOKEN:}"
     dynamodb:
       endpoint: "${AWS_DYNAMODB_ENDPOINT:dynamodb.us-east-1.amazonaws.com}"
-
-jwt:
-  token:
-    key:
-      public: "${JWT_PUBLIC_KEY}"
