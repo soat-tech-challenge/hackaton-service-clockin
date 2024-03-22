@@ -20,8 +20,8 @@ public class ClockInAPIController {
             tags = "2ª chamada - Fluxo principal - Registrar ponto",
             summary = "Registra o ponto do usuario",
             description = "Seria utilizado registrar o ponto do usuario em questao")
-    @GetMapping("/save")
-    public ResponseEntity<ClockInControllerDTO> save(@RequestParam(name = "userId") int userId) {
+    @GetMapping
+    public ResponseEntity<ClockInControllerDTO> queue(@RequestParam(name = "userId") int userId) {
         return ResponseEntity.ok(controller.queue(userId));
     }
 
