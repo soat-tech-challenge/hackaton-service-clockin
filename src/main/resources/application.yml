@@ -50,7 +50,7 @@ management:
 
 server:
   servlet:
-    context-path: "/production"
+    context-path: "/clockin"
   port: 8004
 
 
