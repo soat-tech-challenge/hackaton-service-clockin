@@ -1,0 +1,10 @@
+name: soat-tech-hackaton-clockin
+services:
+  db:
+    image: "postgres:15.4"
+    environment:
+      - "POSTGRES_DB=backend"
+      - "POSTGRES_PASSWORD=backend"
+      - "POSTGRES_USER=backend"
+    ports:
+      - 5004:5432

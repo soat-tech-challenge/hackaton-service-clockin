@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="serviceproduction" />
+        <module name="serviceclockin" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="serviceclockin" options="-parameters" />
       <module name="serviceproduction" options="-parameters" />
     </option>
   </component>

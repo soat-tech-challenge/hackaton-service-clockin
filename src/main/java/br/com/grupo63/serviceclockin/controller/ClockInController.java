@@ -8,24 +8,34 @@ import br.com.grupo63.serviceclockin.usecase.clockin.ClockInUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class ClockInController {
 
-    private final ClockInUseCase statusUseCase;
+    private final ClockInUseCase useCase;
 
     public ClockInControllerDTO queue(int userId) {
         ClockIn clockIn = new ClockIn();
         ClockInAdapter.fillEntity(userId, clockIn);
-        clockIn = statusUseCase.queue(clockIn);
+        clockIn = useCase.queue(clockIn);
         return ClockInPresenter.toDto(clockIn);
     }
 
     public ClockInControllerDTO save(ClockInControllerDTO clockInControllerDTO) {
         ClockIn clockIn = new ClockIn();
         ClockInAdapter.fillEntity(clockInControllerDTO, clockIn);
-        clockIn = statusUseCase.save(clockIn);
+        clockIn = useCase.save(clockIn);
         return ClockInPresenter.toDto(clockIn);
+    }
+
+    public List<ClockInControllerDTO> listByUser(int userId) {
+        return useCase.listByUser(userId).stream().map(ClockInPresenter::toDto).toList();
+    }
+
+    public void generateReport(int userId, String userEmail) {
+        useCase.generateReport(userId, userEmail);
     }
 
 }

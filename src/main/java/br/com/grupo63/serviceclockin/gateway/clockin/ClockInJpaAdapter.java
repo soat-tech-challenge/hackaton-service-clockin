@@ -5,6 +5,9 @@ import br.com.grupo63.serviceclockin.gateway.clockin.entity.ClockInPersistenceEn
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class ClockInJpaAdapter implements IClockInGateway {
@@ -19,4 +22,16 @@ public class ClockInJpaAdapter implements IClockInGateway {
 
         return entity.toModel();
     }
+
+    @Override
+    public List<ClockIn> findByUserId(int userId) {
+        return repository.findByUserId(userId).
+                stream().map(ClockInPersistenceEntity::toModel).toList();
+    }
+
+    @Override
+    public List<ClockIn> findByPeriod(LocalDateTime start, LocalDateTime end) {
+        return repository.findByPeriod(start, end).stream().map(ClockInPersistenceEntity::toModel).toList();
+    }
+
 }
