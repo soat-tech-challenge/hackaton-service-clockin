@@ -66,6 +66,11 @@ info:
   version: '@project.version@'
 
 app:
+  mail:
+    host: "${MAIL_HOST:sandbox.smtp.mailtrap.io}"
+    port: "${MAIL_PORT:2525}"
+    username: "${MAIL_USERNAME:4982c5d1dcdb71}"
+    password: "${MAIL_PASSWORD:dd3ffab915572c}"
   docs-api-url: "${DOCS_API_URL:(no value)}"
   aws:
     access-key: "${AWS_ACCESS_KEY:no_access_key}"
