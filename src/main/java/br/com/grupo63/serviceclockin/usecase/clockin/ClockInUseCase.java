@@ -5,7 +5,6 @@ import br.com.grupo63.serviceclockin.controller.dto.ClockinGroupedByDateDTO;
 import br.com.grupo63.serviceclockin.entity.clockin.ClockIn;
 import br.com.grupo63.serviceclockin.gateway.clockin.IClockInGateway;
 import br.com.grupo63.serviceclockin.presenter.ClockInPresenter;
-import com.amazonaws.util.json.Jackson;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -73,7 +71,7 @@ public class ClockInUseCase implements IClockInUseCase {
 
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("Tempo trabalhado: ");
-            emailContentStringBuilder.append(DateTimeFormatter.ofPattern("HH:mm:ss").format(dto.getWorkedTime()));
+            emailContentStringBuilder.append(DateTimeFormatter.ofPattern("HH:mm:ss").format(dto.getWorkedMinutes()));
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("---");
             emailContentStringBuilder.append("\n\n");

@@ -51,12 +51,12 @@ public class ClockInPresenter {
                 }
             }
 
-            double hours = workedMinutes / 60.0;
-            double remainingMinutes = workedMinutes % 60.0;
+//            double hours = workedMinutes / 60.0;
+//            double remainingMinutes = workedMinutes % 60.0;
 
-            LocalDateTime workedTime = LocalDateTime.now().withHour((int) hours).withMinute((int) remainingMinutes);
+//            LocalDateTime workedTime = LocalDateTime.now().withHour((int) hours).withMinute((int) remainingMinutes);
 
-            dto.setWorkedTime(workedTime);
+            dto.setWorkedMinutes(workedMinutes);
 
             dtos.add(dto);
         }

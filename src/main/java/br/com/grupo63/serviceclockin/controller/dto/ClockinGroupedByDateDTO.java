@@ -17,6 +17,6 @@ public class ClockinGroupedByDateDTO {
 
     private LocalDate date;
     private List<LocalDateTime> clockIns;
-    private LocalDateTime workedTime;
+    private int workedMinutes;
 
 }
