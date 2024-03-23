@@ -11,7 +11,7 @@
     </parent>
     <groupId>br.com.grupo63</groupId>
     <artifactId>serviceclockin</artifactId>
-    <version>0.1.4</version>
+    <version>0.1.5</version>
     <name>Service ClockIn</name>
     <description>FIAP SOAT1 2023 - Group 63 - Hackaton - Clock In microservice </description>
     <properties>
