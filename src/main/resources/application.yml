@@ -22,12 +22,12 @@ spring:
   cloud:
     aws:
       credentials:
-        access-key: "${AWS_ACCESS_KEY:accesskey}"
-        secret-key: "${AWS_SECRET_KEY:secretkey}"
+        access-key: "${AWS_ACCESS_KEY}"
+        secret-key: "${AWS_SECRET_KEY}"
       region:
-        static: "${AWS_REGION:us-east-2}"
+        static: "${AWS_REGION:us-east-1}"
       sqs:
-        endpoint: "${AWS_SQS_ENDPOINT:endpoint}"
+        endpoint: "${AWS_SQS_ENDPOINT}"
 
 springdoc:
   swagger-ui:
@@ -50,7 +50,7 @@ management:
 
 server:
   servlet:
-    context-path: "/"
+    context-path: "/clock-in"
   port: 8004
 
 jwt:

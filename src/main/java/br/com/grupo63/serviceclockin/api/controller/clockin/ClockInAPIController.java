@@ -2,6 +2,7 @@ package br.com.grupo63.serviceclockin.api.controller.clockin;
 
 import br.com.grupo63.serviceclockin.controller.ClockInController;
 import br.com.grupo63.serviceclockin.controller.dto.ClockInControllerDTO;
+import br.com.grupo63.serviceclockin.controller.dto.ClockinGroupedByDateDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,7 +16,7 @@ import java.util.List;
 @Tag(name = "ClockIn", description = "Saves clock in data.")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/clockin")
+@RequestMapping("/")
 public class ClockInAPIController {
 
     private final ClockInController controller;
@@ -32,7 +33,7 @@ public class ClockInAPIController {
             security = @SecurityRequirement(name = "bearerAuth")
     )
     @GetMapping("/user/clock-ins")
-    public ResponseEntity<List<ClockInControllerDTO>> listByUser(HttpServletRequest request) {
+    public ResponseEntity<List<ClockinGroupedByDateDTO>> listByUser(HttpServletRequest request) {
         return ResponseEntity.ok(controller.listByUser(Integer.parseInt((String) request.getAttribute("userId"))));
     }
 

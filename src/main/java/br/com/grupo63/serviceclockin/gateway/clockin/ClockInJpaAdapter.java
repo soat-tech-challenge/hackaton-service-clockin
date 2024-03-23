@@ -24,14 +24,9 @@ public class ClockInJpaAdapter implements IClockInGateway {
     }
 
     @Override
-    public List<ClockIn> findByUserId(int userId) {
-        return repository.findByUserId(userId).
+    public List<ClockIn> findByUserIdAndPeriod(int userId, LocalDateTime start, LocalDateTime end) {
+        return repository.findByUserIdAndPeriod(userId, start, end).
                 stream().map(ClockInPersistenceEntity::toModel).toList();
-    }
-
-    @Override
-    public List<ClockIn> findByPeriod(LocalDateTime start, LocalDateTime end) {
-        return repository.findByPeriod(start, end).stream().map(ClockInPersistenceEntity::toModel).toList();
     }
 
 }
