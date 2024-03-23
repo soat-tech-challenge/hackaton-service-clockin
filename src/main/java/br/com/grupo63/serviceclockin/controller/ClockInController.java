@@ -2,6 +2,7 @@ package br.com.grupo63.serviceclockin.controller;
 
 import br.com.grupo63.serviceclockin.adapter.ClockInAdapter;
 import br.com.grupo63.serviceclockin.controller.dto.ClockInControllerDTO;
+import br.com.grupo63.serviceclockin.controller.dto.ClockinGroupedByDateDTO;
 import br.com.grupo63.serviceclockin.entity.clockin.ClockIn;
 import br.com.grupo63.serviceclockin.presenter.ClockInPresenter;
 import br.com.grupo63.serviceclockin.usecase.clockin.ClockInUseCase;
@@ -30,8 +31,8 @@ public class ClockInController {
         return ClockInPresenter.toDto(clockIn);
     }
 
-    public List<ClockInControllerDTO> listByUser(int userId) {
-        return useCase.listByUser(userId).stream().map(ClockInPresenter::toDto).toList();
+    public List<ClockinGroupedByDateDTO> listByUser(int userId) {
+        return ClockInPresenter.groupByDate(useCase.listByUser(userId));
     }
 
     public void generateReport(int userId, String userEmail) {

@@ -13,7 +13,7 @@ public interface ClockInJpaRepository extends JpaRepository<ClockInPersistenceEn
 
     List<ClockInPersistenceEntity> findByUserId(int userId);
 
-    @Query("SELECT c FROM ClockInPersistenceEntity c WHERE c.clockIn BETWEEN :start AND :end")
-    List<ClockInPersistenceEntity> findByPeriod(LocalDateTime start, LocalDateTime end);
+    @Query("SELECT c FROM ClockInPersistenceEntity c WHERE c.userId = :userId AND c.clockIn BETWEEN :start AND :end")
+    List<ClockInPersistenceEntity> findByUserIdAndPeriod(int userId, LocalDateTime start, LocalDateTime end);
 
 }

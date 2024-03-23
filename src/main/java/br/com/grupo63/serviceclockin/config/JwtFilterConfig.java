@@ -17,7 +17,7 @@ public class JwtFilterConfig {
     public FilterRegistrationBean<JwtFilter> jwtFilterFilterRegistrationBean() {
         FilterRegistrationBean<JwtFilter> jwtFilterFilterRegistrationBean = new FilterRegistrationBean<>();
         jwtFilterFilterRegistrationBean.setFilter(new JwtFilter(jwtService));
-        jwtFilterFilterRegistrationBean.setUrlPatterns(List.of("/clockin/user/*"));
+        jwtFilterFilterRegistrationBean.setUrlPatterns(List.of("/user/*"));
 
         return jwtFilterFilterRegistrationBean;
     }

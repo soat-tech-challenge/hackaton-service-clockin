@@ -9,8 +9,6 @@ public interface IClockInGateway {
 
     ClockIn saveAndFlush(ClockIn entity);
 
-    List<ClockIn> findByUserId(int userId);
-
-    List<ClockIn> findByPeriod(LocalDateTime start, LocalDateTime end);
+    List<ClockIn> findByUserIdAndPeriod(int userId, LocalDateTime start, LocalDateTime end);
 
 }
