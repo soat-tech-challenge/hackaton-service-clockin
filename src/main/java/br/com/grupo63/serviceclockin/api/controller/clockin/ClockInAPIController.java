@@ -40,7 +40,7 @@ public class ClockInAPIController {
     @Operation(
             security = @SecurityRequirement(name = "bearerAuth")
     )
-    @GetMapping("/user/report")
+    @PostMapping("/user/report")
     public ResponseEntity<String> generateReport(HttpServletRequest request) {
         int userId = Integer.parseInt((String) request.getAttribute("userId"));
         String userEmail = (String) request.getAttribute("userEmail");
