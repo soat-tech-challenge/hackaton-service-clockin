@@ -19,9 +19,6 @@ spring:
     locations: classpath:db/migrations/{vendor}/
     enabled: true
 
-server:
-  port: 8001
-
 app:
   docs-api-url: "${DOCS_API_URL:(no value)}"
   aws:
