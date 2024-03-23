@@ -6,7 +6,7 @@ spring:
       enabled: false
   profiles:
     # Value comes from Maven profile (pom.xml)
-    active: '@spring.profiles.active@'
+    active: "@spring.profiles.active@"
   datasource:
     driver-class-name: org.postgresql.Driver
     password: ${DB_PASSWORD:backend}
@@ -51,7 +51,7 @@ management:
 server:
   servlet:
     context-path: "/clock-in"
-  port: 8004
+  port: 8080
 
 jwt:
   token:
@@ -61,9 +61,9 @@ jwt:
 # --- Custom keys ---
 
 info:
-  name: '@project.name@'
-  description: '@project.description@'
-  version: '@project.version@'
+  name: "@project.name@"
+  description: "@project.description@"
+  version: "@project.version@"
 
 app:
   mail:
