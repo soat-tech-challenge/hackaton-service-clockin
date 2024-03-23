@@ -6,7 +6,7 @@ spring:
       enabled: false
   profiles:
     # Value comes from Maven profile (pom.xml)
-    active: 'prod'
+    active: 'dev'
   datasource:
     driver-class-name: org.postgresql.Driver
     password: ${DB_PASSWORD:backend}
@@ -67,10 +67,10 @@ info:
 
 app:
   mail:
-    host: "${MAIL_HOST:sandbox.smtp.mailtrap.io}"
-    port: "${MAIL_PORT:2525}"
-    username: "${MAIL_USERNAME:4982c5d1dcdb71}"
-    password: "${MAIL_PASSWORD:dd3ffab915572c}"
+    host: "${MAIL_HOST}"
+    port: "${MAIL_PORT}"
+    username: "${MAIL_USERNAME}"
+    password: "${MAIL_PASSWORD}"
   docs-api-url: "${DOCS_API_URL:(no value)}"
   aws:
     access-key: "${AWS_ACCESS_KEY:no_access_key}"
