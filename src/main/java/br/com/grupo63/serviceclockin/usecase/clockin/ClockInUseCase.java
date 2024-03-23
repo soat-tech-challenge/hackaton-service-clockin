@@ -71,7 +71,7 @@ public class ClockInUseCase implements IClockInUseCase {
 
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("Tempo trabalhado: ");
-            emailContentStringBuilder.append(DateTimeFormatter.ofPattern("HH:mm:ss").format(dto.getWorkedMinutes()));
+            emailContentStringBuilder.append(dto.getWorkedTimeFormatted());
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("---");
             emailContentStringBuilder.append("\n\n");
