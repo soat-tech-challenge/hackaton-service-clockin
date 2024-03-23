@@ -9,7 +9,9 @@ import io.awspring.cloud.sqs.operations.SqsTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -71,7 +73,10 @@ public class ClockInUseCase implements IClockInUseCase {
 
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("Tempo trabalhado: ");
-            emailContentStringBuilder.append(dto.getWorkedTimeFormatted());
+            emailContentStringBuilder.append(DateTimeFormatter.ofPattern("HH:mm:ss").format(
+                    LocalDateTime.ofInstant(Instant.ofEpochMilli(dto.getWorkedTimeMilliseconds()), ZoneId.systemDefault()))
+            );
+
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("---");
             emailContentStringBuilder.append("\n\n");

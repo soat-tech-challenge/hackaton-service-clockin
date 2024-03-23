@@ -57,8 +57,7 @@ public class ClockInPresenter {
 
             LocalDateTime workedTime = LocalDateTime.now().withHour((int) hours).withMinute((int) remainingMinutes);
 
-            dto.setWorkedTime(workedTime);
-            dto.setWorkedTimeFormatted(DateTimeFormatter.ofPattern("HH:mm:ss").format(workedTime));
+            dto.setWorkedTimeMilliseconds(workedTime.atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli());
 
             dtos.add(dto);
         }
