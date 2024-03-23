@@ -51,7 +51,7 @@ management:
 server:
   servlet:
     context-path: "/clock-in"
-  port: 8001
+  port: 8002
 
 jwt:
   token:
