@@ -7,7 +7,6 @@ import br.com.grupo63.serviceclockin.entity.clockin.ClockIn;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ClockInPresenter {
@@ -42,22 +41,17 @@ public class ClockInPresenter {
             dto.setDate(entry.getKey());
             dto.setClockIns(sortedTimes);
 
-            int workedMinutes = 0;
+            long workedTimeInMillis = 0;
 
             for (int i = 0; i < sortedTimes.size(); i++) {
                 if (i % 2 != 0) {
-                    Duration difference = Duration.between(sortedTimes.get(i), sortedTimes.get(i - 1));
+                    Duration difference = Duration.between(sortedTimes.get(i - 1), sortedTimes.get(i));
 
-                    workedMinutes += (int) Math.abs(difference.toMinutes());
+                    workedTimeInMillis += difference.toMillis();
                 }
             }
 
-            double hours = workedMinutes / 60.0;
-            double remainingMinutes = workedMinutes % 60.0;
-
-            LocalDateTime workedTime = LocalDateTime.now().withHour((int) hours).withMinute((int) remainingMinutes);
-
-            dto.setWorkedTimeMilliseconds(workedTime.atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli());
+            dto.setWorkedTimeMilliseconds(workedTimeInMillis);
 
             dtos.add(dto);
         }

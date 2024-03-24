@@ -6,7 +6,7 @@ spring:
       enabled: false
   profiles:
     # Value comes from Maven profile (pom.xml)
-    active: '@spring.profiles.active@'
+    active: 'dev'
   datasource:
     driver-class-name: org.postgresql.Driver
     password: ${DB_PASSWORD:backend}
@@ -61,9 +61,9 @@ jwt:
 # --- Custom keys ---
 
 info:
-  name: '@project.name@'
-  description: '@project.description@'
-  version: '@project.version@'
+  name: 'Service ClockIn'
+  description: 'FIAP SOAT1 2023 - Group 63 - Hackaton - Clock In microservice'
+  version: '0.1.8'
 
 app:
   mail:
