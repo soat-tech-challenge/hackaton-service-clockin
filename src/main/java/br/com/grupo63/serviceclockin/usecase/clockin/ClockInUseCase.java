@@ -73,9 +73,14 @@ public class ClockInUseCase implements IClockInUseCase {
 
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("Tempo trabalhado: ");
-            emailContentStringBuilder.append(DateTimeFormatter.ofPattern("HH:mm:ss").format(
-                    LocalDateTime.ofInstant(Instant.ofEpochMilli(dto.getWorkedTimeMilliseconds()), ZoneId.systemDefault()))
-            );
+
+            long seconds = dto.getWorkedTimeMilliseconds() / 1000;
+            long hours = seconds / 3600;
+            long remainingSeconds = seconds % 3600;
+            long minutes = remainingSeconds / 60;
+            long remainingSecondsOutput = remainingSeconds % 60;
+
+            emailContentStringBuilder.append(DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalDateTime.now().withHour((int) hours).withMinute((int) minutes).withSecond((int) remainingSecondsOutput)));
 
             emailContentStringBuilder.append("\n\n");
             emailContentStringBuilder.append("---");
